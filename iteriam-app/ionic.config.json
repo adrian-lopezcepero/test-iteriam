@@ -1,0 +1,7 @@
+{
+  "name": "iteriam-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
