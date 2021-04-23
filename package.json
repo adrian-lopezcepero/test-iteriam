@@ -10,7 +10,8 @@
     "browser:build:pro": "ng build --output-path public --prod && firebase deploy --except functions",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "affected:lint": "nx affected:lint --parallel"
   },
   "private": true,
   "dependencies": {
@@ -22,6 +23,7 @@
     "@angular/router": "~11.2.0",
     "@capacitor/core": "2.4.7",
     "@ionic/angular": "^5.5.2",
+    "commitlint": "^12.1.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
@@ -37,6 +39,9 @@
     "@angular/compiler-cli": "~11.2.0",
     "@angular/language-service": "~11.2.0",
     "@capacitor/cli": "2.4.7",
+    "@commitlint/cli": "^12.0.1",
+    "@commitlint/config-conventional": "^12.0.1",
+    "@commitlint/prompt": "^12.0.1",
     "@ionic/angular-toolkit": "^3.1.1",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.3",
@@ -60,5 +65,16 @@
     "ts-node": "~8.3.0",
     "typescript": "~4.0.2"
   },
-  "description": "An Ionic project"
+  "description": "An Ionic project",
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run affected:lint",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  }
 }
