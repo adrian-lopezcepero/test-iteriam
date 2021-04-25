@@ -5,5 +5,11 @@
 </ion-header>
 
 <ion-content>
-  Hello Login
+  <form (ngSubmit)="login()" [formGroup]="loginForm">
+    <label for="email">Email</label>
+    <input name="email" type="email" formControlName="email" />
+    <label for="password">Password</label>
+    <input name="password" type="text" formControlName="password" />
+    <button type="submit">Login</button>
+  </form>
 </ion-content>
