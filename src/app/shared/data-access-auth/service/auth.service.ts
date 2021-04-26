@@ -16,9 +16,6 @@ export class AuthService {
   constructor(private authApi: AuthApiInterface) { }
 
   public login(email: string, password: string): void {
-    console.log('email', email);
-    console.log('password', password);
-
     this.authApi.login(email, password).pipe(
       first()
     ).subscribe(

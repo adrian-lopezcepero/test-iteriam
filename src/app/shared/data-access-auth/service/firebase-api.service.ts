@@ -33,14 +33,12 @@ export class FirebaseApiService implements AuthApiInterface {
 
   login(email: string, password: string): Observable<User> {
     return defer(() => firebase.auth().signInWithEmailAndPassword(email, password)).pipe(
-      tap(console.log),
       map((user: firebase.auth.UserCredential) => ({ email: user.user.email, password: '' } as User))
     );
   }
 
   logout(user: User): Observable<boolean> {
     return defer(() => firebase.auth().signOut()).pipe(
-      tap(console.log),
       map(() => Boolean(true))
     );
   }
