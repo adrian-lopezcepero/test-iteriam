@@ -2,12 +2,12 @@ import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core
 import { FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-itemiam-input',
-  templateUrl: './itemiam-input.component.html',
-  styleUrls: ['./itemiam-input.component.scss'],
+  selector: 'app-iteriam-input',
+  templateUrl: './iteriam-input.component.html',
+  styleUrls: ['./iteriam-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ItemiamInputComponent implements OnInit {
+export class IteriamInputComponent implements OnInit {
 
   @Input()
   label = '';

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ItemiamInputComponent } from './itemiam-input.component';
+import { IteriamInputComponent } from './iteriam-input.component';
 
 describe('ItemiamInputComponent', () => {
-  let component: ItemiamInputComponent;
-  let fixture: ComponentFixture<ItemiamInputComponent>;
+  let component: IteriamInputComponent;
+  let fixture: ComponentFixture<IteriamInputComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ItemiamInputComponent ]
+      declarations: [ IteriamInputComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ItemiamInputComponent);
+    fixture = TestBed.createComponent(IteriamInputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

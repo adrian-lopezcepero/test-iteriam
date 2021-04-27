@@ -1,21 +1,19 @@
-<ion-content class="login-container ">
-  <div class="image-container"></div>
-
+<ion-content class="login-container">
   <form (ngSubmit)="login()" [formGroup]="loginForm">
-    <app-itemiam-input
+    <app-iteriam-input
       [control]="email"
       [className]="'login-input'"
       [inputType]="'email'"
       [icon]="'person-outline'"
-      [label]="'Write your email'"
-    ></app-itemiam-input>
-    <app-itemiam-input
+      [label]="'Email'"
+    ></app-iteriam-input>
+    <app-iteriam-input
       [control]="password"
       [className]="'password-input'"
       [inputType]="'password'"
       [icon]="'lock-closed-outline'"
-      [label]="'Write your password'"
-    ></app-itemiam-input>
-    <button type="submit">Login</button>
+      [label]="'Password'"
+    ></app-iteriam-input>
+    <ion-button type="submit" color="primary" expand="full">Aceptar</ion-button>
   </form>
 </ion-content>

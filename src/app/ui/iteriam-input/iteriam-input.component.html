@@ -1,0 +1,7 @@
+  <ion-item *ngIf="control" id="iteriam-input__container" [class]="className">
+    <ion-label position="floating">
+      <ion-icon *ngIf="icon" [name]="icon"></ion-icon> 
+      {{ label }}
+    </ion-label>
+    <ion-input [formControl]="control" [type]="inputType"></ion-input>
+  </ion-item>

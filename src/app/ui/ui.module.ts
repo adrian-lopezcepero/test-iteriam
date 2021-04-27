@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ItemiamInputComponent } from './itemiam-input/itemiam-input.component';
-import { IonicModule, IonIcon } from '@ionic/angular';
-import { IteriamButtonComponent } from './iteriam-button/iteriam-button.component';
+import { IteriamInputComponent } from './iteriam-input/iteriam-input.component';
+import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-const EXPORTED_COMPONENTS = [ItemiamInputComponent, IteriamButtonComponent];
+const EXPORTED_COMPONENTS = [IteriamInputComponent,];
 const EXPORTED_IMPORTS = [FormsModule, ReactiveFormsModule, IonicModule];
 
 @NgModule({
