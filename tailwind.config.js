@@ -20,9 +20,12 @@ module.exports = {
           DEFAULT: '5px'
         }
       },
+      screens: {
+        'desktop': '960px',
+      },
       backgroundImage: theme => ({
         'login': "url('/assets/images/background.jpg')"
-      })
+      }),
     },
   },
   variants: {

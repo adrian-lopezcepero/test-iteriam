@@ -1,10 +1,23 @@
 <div class="w-full h-full bg-cover bg-login">
-  <div class="p-10">
+  <div class="p-10 desktop:hidden">
     <img src="/assets/images/logo.jpg" class="object-cover mx-auto h-28 w-28" />
   </div>
-  <div class="mx-8 bg-white">
-    <form (ngSubmit)="login()" [formGroup]="loginForm">
-      <div class="px-6 pt-2">
+  <div class="mx-8 bg-white desktop:w-96 desktop:mx-auto desktop:my-40">
+    <div class="hidden pt-8 desktop:block">
+      <img
+        src="/assets/images/logo.jpg"
+        class="object-cover mx-auto w-28 h-28"
+      />
+    </div>
+    <div class="hidden text-center desktop:w-auto desktop:mx-auto desktop:block desktop:pt-8 desktop:pb-4">
+      <label class="text-xl iteriam-label">Prueba técnica</label>
+    </div>
+    <form
+      (ngSubmit)="login()"
+      [formGroup]="loginForm"
+      class="desktop:flex desktop:flex-col"
+    >
+      <div class="px-6">
         <app-iteriam-input
           [control]="email"
           [inputType]="'email'"
@@ -25,7 +38,7 @@
       </div>
       <button
         type="submit"
-        class="w-full p-4 mt-4 font-bold text-white bg-blue"
+        class="w-full p-4 mt-4 font-bold text-white bg-blue desktop:border-solid desktop:bg-white desktop:border desktop:border-blue desktop:text-gray desktop:font-medium desktop:w-32 desktop:mx-auto desktop:rounded-full desktop:py-1 desktop:mb-4"
       >
         Acceder
       </button>
