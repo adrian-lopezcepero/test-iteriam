@@ -1,19 +1,32 @@
-<ion-content class="login-container">
-  <form (ngSubmit)="login()" [formGroup]="loginForm">
-    <app-iteriam-input
-      [control]="email"
-      [className]="'login-input'"
-      [inputType]="'email'"
-      [icon]="'person-outline'"
-      [label]="'Email'"
-    ></app-iteriam-input>
-    <app-iteriam-input
-      [control]="password"
-      [className]="'password-input'"
-      [inputType]="'password'"
-      [icon]="'lock-closed-outline'"
-      [label]="'Password'"
-    ></app-iteriam-input>
-    <ion-button type="submit" color="primary" expand="full">Aceptar</ion-button>
-  </form>
-</ion-content>
+<div class="w-full h-full bg-cover bg-login">
+  <div class="p-10">
+    <img src="/assets/images/logo.jpg" class="object-cover mx-auto h-28 w-28" />
+  </div>
+  <div class="mx-8 bg-white">
+    <form (ngSubmit)="login()" [formGroup]="loginForm" class="">
+      <div class="px-6 pt-2">
+        <app-iteriam-input
+          [control]="email"
+          [inputType]="'email'"
+          [icon]="'person-outline'"
+          [label]="'Email'"
+        ></app-iteriam-input>
+      </div>
+      <div class="px-6">
+        <app-iteriam-input
+          [control]="password"
+          [inputType]="'password'"
+          [icon]="'lock-closed-outline'"
+          [label]="'Password'"
+        ></app-iteriam-input>
+      </div>
+      <button
+        type="submit"
+        color="primary"
+        class="w-full p-4 font-bold text-white bg-blue"
+      >
+        Acceder
+      </button>
+    </form>
+  </div>
+</div>

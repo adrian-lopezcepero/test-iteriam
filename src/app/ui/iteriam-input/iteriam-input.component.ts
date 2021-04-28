@@ -17,8 +17,6 @@ export class IteriamInputComponent implements OnInit {
   control: FormControl | null = null;
   @Input()
   icon: string | null = null;
-  @Input()
-  className: string | null;
 
   constructor() { }
 
