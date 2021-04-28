@@ -3,7 +3,7 @@
     <img src="/assets/images/logo.jpg" class="object-cover mx-auto h-28 w-28" />
   </div>
   <div class="mx-8 bg-white">
-    <form (ngSubmit)="login()" [formGroup]="loginForm" class="">
+    <form (ngSubmit)="login()" [formGroup]="loginForm">
       <div class="px-6 pt-2">
         <app-iteriam-input
           [control]="email"
@@ -11,19 +11,21 @@
           [icon]="'person-outline'"
           [label]="'Email'"
         ></app-iteriam-input>
-      </div>
-      <div class="px-6">
         <app-iteriam-input
           [control]="password"
           [inputType]="'password'"
           [icon]="'lock-closed-outline'"
           [label]="'Password'"
         ></app-iteriam-input>
+
+        <app-iteriam-toggle
+          [control]="rememberMe"
+          [label]="'Recordar'"
+        ></app-iteriam-toggle>
       </div>
       <button
         type="submit"
-        color="primary"
-        class="w-full p-4 font-bold text-white bg-blue"
+        class="w-full p-4 mt-4 font-bold text-white bg-blue"
       >
         Acceder
       </button>

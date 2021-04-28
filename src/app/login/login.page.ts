@@ -19,7 +19,8 @@ export class LoginPage implements OnInit {
     this.loginForm = this.formBuilder.group(
       {
         email: [''],
-        password: ['']
+        password: [''],
+        rememberMe: []
       }
     );
   }
@@ -39,6 +40,10 @@ export class LoginPage implements OnInit {
 
   get password(): FormControl {
     return this.loginForm.controls.password as FormControl;
+  }
+
+  get rememberMe(): FormControl {
+    return this.loginForm.controls.rememberMe as FormControl;
   }
 
 }
