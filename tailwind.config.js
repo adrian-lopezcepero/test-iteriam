@@ -7,6 +7,9 @@ module.exports = {
   theme: {
     fontFamily: {
     },
+    ripple: theme => ({
+      colors: theme('colors')
+    }),
     extend: {
       colors: {
         blue: '#1379c8',
@@ -26,10 +29,18 @@ module.exports = {
       backgroundImage: theme => ({
         'login': "url('/assets/images/background.jpg')"
       }),
+
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      backgroundColor: ['active'],
+      textColor: ['active'],
+      borderColor: ['active'],
+      borderStyle: ['active'],
+    },
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-ripple')()
+  ],
 }
