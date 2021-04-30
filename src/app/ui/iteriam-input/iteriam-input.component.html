@@ -1,17 +1,35 @@
-<div
-  *ngIf="control"
-  id="iteriam-input__container"
-  class="relative w-full py-4"
->
+<div id="iteriam-input__container" class="relative w-full py-4">
   <ion-icon
     *ngIf="icon"
     [name]="icon"
     class="absolute left-0 z-10 text-3xl bottom-8 text-gray-accent focus:text-gray focus:z-10"
   ></ion-icon>
   <input
+  class="pl-10"
+  [ngClass]="{
+    'iteriam-input': isValid,
+    'iteriam-input-error': !isValid
+  }"
+  [formControl]="control"
+  autocomplete="{{ inputType }}"
+  [type]="inputType"
+  [placeholder]="placeholder"
+  [maxlength]="maxLength"
+  [minlength]="minLength"
+  placeholder="{{ placeholder }}"
+/>
+  <!-- <input
+    class="pl-10"
+    [ngClass]="{
+      'iteriam-input': this.control.pristine || this.control?.valid,
+      'iteriam-input-error': !this.control.pristine && !this.control?.valid
+    }"
     [formControl]="control"
+    autocomplete="{{ inputType }}"
     [type]="inputType"
-    class="pl-10 iteriam-input"
-    [placeholder]="label"
-  />
+    [placeholder]="placeholder"
+    [maxlength]="maxLength"
+    [minlength]="minLength"
+    placeholder="{{ placeholder }}"
+  /> -->
 </div>

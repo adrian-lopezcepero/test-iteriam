@@ -2,3 +2,7 @@
 .iteriam-input {
     @apply w-full pb-4 text-sm border-b rounded-none top-2 focus:outline-none placeholder-gray-accent text-gray border-gray-accent rounded-t-md focus:ring-indigo-500 focus:border-gray focus:z-10 bg-white;
 }
+
+.iteriam-input-error {
+    @apply w-full pb-4 text-sm border-b rounded-none top-2 focus:outline-none placeholder-gray-accent text-gray  border-red-600 rounded-t-md focus:ring-indigo-500 focus:border-gray focus:z-10 bg-white;
+}

@@ -1,0 +1,29 @@
+<form
+  (ngSubmit)="submit()"
+  [formGroup]="loginForm"
+  class="desktop:flex desktop:flex-col"
+>
+  <div class="px-6 py-4">
+    <app-iteriam-input
+      [control]="email"
+      [inputType]="'email'"
+      [icon]="'person-outline'"
+      [placeholder]="'Email'"
+      [isValid]="emailValid"
+    ></app-iteriam-input>
+
+    <app-iteriam-input
+      [control]="password"
+      [inputType]="'password'"
+      [icon]="'lock-closed-outline'"
+      [placeholder]="'Password'"
+      [isValid]="passwordValid"
+    ></app-iteriam-input>
+
+    <app-iteriam-toggle
+      formControlName="rememberMe"
+      [label]="'Recordar'"
+    ></app-iteriam-toggle>
+  </div>
+  <button type="submit" class="button-primary">Acceder</button>
+</form>

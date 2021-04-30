@@ -8,6 +8,7 @@ import { LoginPageRoutingModule } from './login-routing.module';
 
 import { LoginPage } from './login.page';
 import { UiModule } from '../ui/ui.module';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 @NgModule({
   imports: [
@@ -18,6 +19,6 @@ import { UiModule } from '../ui/ui.module';
     LoginPageRoutingModule,
     UiModule
   ],
-  declarations: [LoginPage]
+  declarations: [LoginPage, LoginFormComponent]
 })
 export class LoginPageModule {}

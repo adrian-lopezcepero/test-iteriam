@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { filter, first } from 'rxjs/operators';
 
 import { AuthService } from '../shared/data-access-auth/service/auth.service';
+import { FormError, User } from '../shared/util';
 
 @Component({
   selector: 'app-login',
@@ -13,37 +14,17 @@ import { AuthService } from '../shared/data-access-auth/service/auth.service';
 })
 export class LoginPage implements OnInit {
 
-  loginForm: FormGroup;
-
-  constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router) {
-    this.loginForm = this.formBuilder.group(
-      {
-        email: [''],
-        password: [''],
-        rememberMe: []
-      }
-    );
-  }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  login(): void {
-    const { email, password } = this.loginForm.value;
-    this.authService.login(email, password);
+  login(user: User): void {
+    this.authService.login(user.email, user.password);
     this.authService.isLogged$.pipe(filter(Boolean), first()).subscribe(() => this.router.navigateByUrl('home'));
   }
 
-  get email(): FormControl {
-    return this.loginForm.controls.email as FormControl;
-  }
-
-  get password(): FormControl {
-    return this.loginForm.controls.password as FormControl;
-  }
-
-  get rememberMe(): FormControl {
-    return this.loginForm.controls.rememberMe as FormControl;
+  errors(errors: FormError[]): void {
   }
 
 }

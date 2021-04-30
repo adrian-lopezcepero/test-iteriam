@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-iteriam-input',
@@ -7,20 +7,19 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./iteriam-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class IteriamInputComponent implements OnInit {
+export class IteriamInputComponent {
 
   @Input()
-  label = '';
+  placeholder = '';
   @Input()
   inputType = 'text';
   @Input()
-  control: FormControl | null = null;
-  @Input()
   icon: string | null = null;
+  @Input() control: FormControl | null = null;
+  @Input() isValid = true;
 
-  constructor() { }
+  maxLength: number;
+  minLength: number;
 
-  ngOnInit(): void {
-  }
 
 }

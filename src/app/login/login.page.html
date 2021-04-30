@@ -14,31 +14,9 @@
     >
       <label class="text-xl iteriam-label">Prueba técnica</label>
     </div>
-    <form
-      (ngSubmit)="login()"
-      [formGroup]="loginForm"
-      class="desktop:flex desktop:flex-col"
-    >
-      <div class="px-6">
-        <app-iteriam-input
-          [control]="email"
-          [inputType]="'email'"
-          [icon]="'person-outline'"
-          [label]="'Email'"
-        ></app-iteriam-input>
-        <app-iteriam-input
-          [control]="password"
-          [inputType]="'password'"
-          [icon]="'lock-closed-outline'"
-          [label]="'Password'"
-        ></app-iteriam-input>
-
-        <app-iteriam-toggle
-          [control]="rememberMe"
-          [label]="'Recordar'"
-        ></app-iteriam-toggle>
-      </div>
-      <button type="submit" class="button-primary">Acceder</button>
-    </form>
+    <app-login-form
+      (login)="this.login($event)"
+      (formErrors)="this.errors($event)"
+    ></app-login-form>
   </div>
 </div>
