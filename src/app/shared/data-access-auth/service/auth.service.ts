@@ -22,8 +22,7 @@ export class AuthService {
       (user) => {
         this.isLogged$.next(true);
         this.user$.next(user);
-      },
-      error => console.log(error)
-      );
+      }
+    );
   }
 }
