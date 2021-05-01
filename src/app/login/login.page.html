@@ -1,4 +1,4 @@
-<div class="w-full h-full bg-cover bg-login">
+<div class="w-full h-full overflow-y-auto bg-cover bg-login">
   <div class="p-10 desktop:hidden">
     <img src="/assets/images/logo.jpg" class="object-cover mx-auto h-28 w-28" />
   </div>
@@ -16,7 +16,8 @@
     </div>
     <app-login-form
       (login)="this.login($event)"
-      (formErrors)="this.errors($event)"
+      (errors)="this.onErrors($event)"
     ></app-login-form>
   </div>
+  <app-toast [errors]="errors"></app-toast>
 </div>

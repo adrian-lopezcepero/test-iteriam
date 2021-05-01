@@ -4,12 +4,13 @@ import { IteriamInputComponent } from './iteriam-input/iteriam-input.component';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IteriamToggleComponent } from './iteriam-toggle/iteriam-toggle.component';
+import { ToastComponent } from './toast/toast.component';
 
-const EXPORTED_COMPONENTS = [IteriamInputComponent,IteriamToggleComponent];
+const EXPORTED_COMPONENTS = [IteriamInputComponent,IteriamToggleComponent, ToastComponent];
 const EXPORTED_IMPORTS = [FormsModule, ReactiveFormsModule, IonicModule];
 
 @NgModule({
-  declarations: [...EXPORTED_COMPONENTS, IteriamToggleComponent],
+  declarations: [...EXPORTED_COMPONENTS],
   imports: [
     CommonModule, ...EXPORTED_IMPORTS
   ],

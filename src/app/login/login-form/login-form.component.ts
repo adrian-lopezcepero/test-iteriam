@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { reduce, tap } from 'rxjs/operators';
+import { reduce } from 'rxjs/operators';
 
-import { FormError, formErrors } from 'src/app/shared/util';
+import { formErrors } from 'src/app/shared/util';
 import { User } from 'src/app/shared/util/models/user.model';
 
 @Component({
@@ -14,26 +14,30 @@ import { User } from 'src/app/shared/util/models/user.model';
 export class LoginFormComponent implements OnInit {
 
   @Output() login = new EventEmitter<User>();
-  @Output() formErrors = new EventEmitter<FormError[]>();
+  @Output() errors = new EventEmitter<string[]>();
 
   loginForm: FormGroup;
   emailValid = true;
   passwordValid = true;
+  errorValidations: { controlName: string; validator: string; errorMessage: string; }[];
 
   constructor(private formBuilder: FormBuilder) {
     this.loginForm = this.formBuilder.group(
       {
-        email: ['', [Validators.required, Validators.email.bind(Validators.email)]],
-        password: ['', [Validators.required, Validators.maxLength(6)]],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
         rememberMe: [false]
       }
     );
   }
 
   ngOnInit(): void {
-    this.loginForm.statusChanges.pipe(
-      tap(console.log)
-    ).subscribe();
+    this.errorValidations = [
+      { controlName: 'email', validator: 'required', errorMessage: 'El email es obligatorio' },
+      { controlName: 'email', validator: 'email', errorMessage: 'El formato del email no es correcto' },
+      { controlName: 'password', validator: 'required', errorMessage: 'El password es obligatorio' },
+      { controlName: 'password', validator: 'minlength', errorMessage: 'El password debe ser mayor de 5 caracteres' }
+    ];
   }
 
   public get email(): FormControl {
@@ -45,14 +49,23 @@ export class LoginFormComponent implements OnInit {
   }
 
 
+
   submit(): void {
+    const errors = formErrors(this.loginForm);
+    this.emailValid = !errors?.map(error => error.controlName).includes('email');
+    this.passwordValid = !errors?.map(error => error.controlName).includes('password');
     if (this.loginForm.valid) {
       this.login.emit(this.loginForm.value);
     } else {
-      const errors = formErrors(this.loginForm);
-      this.emailValid = !errors.map(error => error.controlName).includes('email');
-      this.passwordValid = !errors.map(error => error.controlName).includes('password');
-      this.formErrors.emit(errors);
+      console.log(errors);
+
+      const errorMessages = this.errorValidations
+        .filter(e => errors.find(error => error.controlName === e.controlName
+          && Object.keys(error.errors || '').includes(e.validator)))
+          .map(e => e.errorMessage);
+      this.errors.emit(errorMessages);
     }
   }
+
+  reducer = (accumulator, currentValue) => accumulator + currentValue;
 }

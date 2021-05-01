@@ -14,17 +14,25 @@ import { FormError, User } from '../shared/util';
 })
 export class LoginPage implements OnInit {
 
+
+  errors: string[];
+
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
 
   login(user: User): void {
+    this.errors = [];
     this.authService.login(user.email, user.password);
-    this.authService.isLogged$.pipe(filter(Boolean), first()).subscribe(() => this.router.navigateByUrl('home'));
+    this.authService.isLogged$.pipe(
+      filter(Boolean),
+      first())
+      .subscribe(() => this.router.navigateByUrl('home'));
   }
 
-  errors(errors: FormError[]): void {
+  onErrors(errors: string[]): void {
+    this.errors = errors;
   }
 
 }
