@@ -1,11 +1,16 @@
 {
   "APP": {
     "NAME": "Iteriam App",
-    "TEST_NAME": "Prueba técnica"
+    "TEST_NAME": "Prueba técnica",
+    "LOADING": "Cargando..."
   },
   "ERROR": {
     "REQUIRED": "El campo {{ controlName }} es obligatorio",
     "EMAIL": "El formato del email no es correcto",
     "MIN_LENGTH": "El {{controlName}} debe ser mayor de {{length}} caracteres"
-  }
+  },
+  "ACCESS": "Acceder",
+  "EMAIL": "Email",
+  "REMEMBER": "Recordar",
+  "PASSWORD": "Contraseña"
 }

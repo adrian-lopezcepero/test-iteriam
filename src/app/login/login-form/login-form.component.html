@@ -8,7 +8,7 @@
       [control]="email"
       [inputType]="'email'"
       [icon]="'person-outline'"
-      [placeholder]="'Email'"
+      placeholder="{{ 'EMAIL' | translate }}"
       [isValid]="emailValid"
     ></app-iteriam-input>
 
@@ -16,17 +16,19 @@
       [control]="password"
       [inputType]="'password'"
       [icon]="'lock-closed-outline'"
-      [placeholder]="'Password'"
+      placeholder="{{ 'PASSWORD' | translate }}"
       [isValid]="passwordValid"
     ></app-iteriam-input>
 
     <app-iteriam-toggle
       formControlName="rememberMe"
-      [label]="'Recordar'"
+      label="{{ 'REMEMBER' | translate }}"
     ></app-iteriam-toggle>
   </div>
   <button type="submit" class="button-primary" [disabled]="this.loading">
-    <p *ngIf="!loading">Acceder</p>
-    <p *ngIf="loading" class="animate-pulse">Cargando...</p>
+    <p *ngIf="!loading">{{ "ACCESS" | translate }}</p>
+    <p *ngIf="loading" class="animate-pulse">
+      {{ "APP.LOADING" | translate }}
+    </p>
   </button>
 </form>
