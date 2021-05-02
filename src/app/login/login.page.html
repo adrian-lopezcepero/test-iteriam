@@ -4,7 +4,7 @@
   <div class="p-10 desktop:hidden">
     <img src="/assets/images/logo.jpg" class="object-cover mx-auto h-28 w-28" />
   </div>
-  <div class="mx-8 bg-white desktop:w-96 desktop:mx-auto desktop:my-40">
+  <div class="mx-8 bg-white desktop:w-96 desktop:mx-auto desktop:mt-40">
     <div class="hidden pt-8 desktop:block">
       <img
         src="/assets/images/logo.jpg"
@@ -14,7 +14,9 @@
     <div
       class="hidden text-center desktop:w-auto desktop:mx-auto desktop:block desktop:pt-8 desktop:pb-4"
     >
-      <label class="text-xl iteriam-label">Prueba técnica</label>
+      <label class="text-xl iteriam-label"
+        >{{'APP.TEST_NAME' | translate}}</label
+      >
     </div>
     <app-login-form
       [loading]="loading$ | async"
@@ -22,7 +24,5 @@
       (errors)="this.onErrors($event)"
     ></app-login-form>
   </div>
-  <app-toast *ngIf="(loading$ | async) === false" 
-  [errors]="errors"
-  ></app-toast>
+  <app-toast *ngIf="(loading$ | async) === false" [errors]="errors"></app-toast>
 </div>

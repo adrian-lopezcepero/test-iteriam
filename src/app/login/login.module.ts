@@ -9,6 +9,7 @@ import { LoginPageRoutingModule } from './login-routing.module';
 import { LoginPage } from './login.page';
 import { UiModule } from '../ui/ui.module';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
     ReactiveFormsModule,
     IonicModule,
     LoginPageRoutingModule,
-    UiModule
+    UiModule,
+    TranslateModule
   ],
   declarations: [LoginPage, LoginFormComponent]
 })

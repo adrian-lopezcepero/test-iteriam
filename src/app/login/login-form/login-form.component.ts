@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 
 import { formErrors } from 'src/app/shared/util';
 import { User } from 'src/app/shared/util/models/user.model';
@@ -21,11 +22,11 @@ export class LoginFormComponent implements OnInit {
   passwordValid = true;
   errorValidations: { controlName: string; validator: string; errorMessage: string; }[];
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private translate: TranslateService) {
     this.loginForm = this.formBuilder.group(
       {
-        email: ['test@iteriam.com', [Validators.required, Validators.email]],
-        password: ['123456', [Validators.required, Validators.minLength(6)]],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
         rememberMe: [false]
       }
     );
@@ -33,10 +34,22 @@ export class LoginFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.errorValidations = [
-      { controlName: 'email', validator: 'required', errorMessage: 'El email es obligatorio' },
-      { controlName: 'email', validator: 'email', errorMessage: 'El formato del email no es correcto' },
-      { controlName: 'password', validator: 'required', errorMessage: 'El password es obligatorio' },
-      { controlName: 'password', validator: 'minlength', errorMessage: 'El password debe ser mayor de 5 caracteres' }
+      {
+        controlName: 'email', validator: 'required',
+        errorMessage: this.translate.instant('ERROR.REQUIRED', { controlName: 'email' })
+      },
+      {
+        controlName: 'email', validator: 'email',
+        errorMessage: this.translate.instant('ERROR.EMAIL')
+      },
+      {
+        controlName: 'password', validator: 'required',
+        errorMessage: this.translate.instant('ERROR.REQUIRED', { controlName: 'password' })
+      },
+      {
+        controlName: 'password', validator: 'minlength',
+        errorMessage: this.translate.instant('ERROR.MIN_LENGTH', { controlName: 'password', length: 5 })
+      }
     ];
   }
 
