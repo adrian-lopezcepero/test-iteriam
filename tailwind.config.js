@@ -12,7 +12,11 @@ module.exports = {
     }),
     extend: {
       colors: {
-        blue: '#1379c8',
+        blue: {
+          DEFAULT: '#1379c8',
+          700: '#1D4ED8',
+          800: '#1E40AF'
+        },
         gray: {
           DEFAULT: '#434343',
           accent: '#abaaab'
@@ -44,7 +48,36 @@ module.exports = {
         }
       },
       animation: {
-        'fade-in-down': 'fade-in-down 0.5s ease-out'
+        'fade-in-down': 'fade-in-down 0.5s ease-out',
+        'flip-vertical-bck': 'flip-vertical-bck 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955)   both',
+        "rotate-vert-center": 'rotate-vert-center 3s cubic-bezier(0.455, 0.030, 0.515, 0.955)   both',
+        'scale-up-center': 'scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000)   both'
+      },
+      keyframes: {
+        "flip-vertical-bck": {
+          "0%": {
+            transform: "translateZ(0) rotateY(0)"
+          },
+          to: {
+            transform: "translateZ(-260px) rotateY(-180deg)"
+          }
+        },
+        "rotate-vert-center": {
+          "0%": {
+            transform: "rotateY(0)"
+          },
+          to: {
+            transform: "rotateY(360deg)"
+          },
+          "scale-up-center": {
+            "0%": {
+              transform: "scale(.5)"
+            },
+            to: {
+              transform: "scale(1)"
+            }
+          }
+        }
       }
 
     },
