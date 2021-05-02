@@ -1,4 +1,6 @@
 <div class="w-full h-full overflow-y-auto bg-cover bg-login">
+  <svg class="w-5 h-5 text-white animate-spin" viewBox="0 0 24 24">loading</svg>
+
   <div class="p-10 desktop:hidden">
     <img src="/assets/images/logo.jpg" class="object-cover mx-auto h-28 w-28" />
   </div>
@@ -15,9 +17,12 @@
       <label class="text-xl iteriam-label">Prueba técnica</label>
     </div>
     <app-login-form
+      [loading]="loading$ | async"
       (login)="this.login($event)"
       (errors)="this.onErrors($event)"
     ></app-login-form>
   </div>
-  <app-toast [errors]="errors"></app-toast>
+  <app-toast *ngIf="(loading$ | async) === false" 
+  [errors]="errors"
+  ></app-toast>
 </div>

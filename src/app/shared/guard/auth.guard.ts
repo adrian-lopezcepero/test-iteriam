@@ -9,12 +9,12 @@ import { AuthService } from '../data-access-auth/service/auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanLoad {
+export class AuthGuard implements CanActivate {
 
   constructor(private authService: AuthService, private router: Router) { }
 
-  canLoad(): Observable<boolean> {
-    return this.authService.isLogged$.pipe(
+  canActivate(): Observable<boolean> {
+    return this.authService.logged$.pipe(
       tap((logged: boolean) => {
         if (!logged) {
           this.router.navigateByUrl('login');

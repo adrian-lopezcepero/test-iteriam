@@ -25,5 +25,8 @@
       [label]="'Recordar'"
     ></app-iteriam-toggle>
   </div>
-  <button type="submit" class="button-primary">Acceder</button>
+  <button type="submit" class="button-primary" [disabled]="this.loading">
+    <p *ngIf="!loading">Acceder</p>
+    <p *ngIf="loading" class="animate-pulse">Cargando...</p>
+  </button>
 </form>

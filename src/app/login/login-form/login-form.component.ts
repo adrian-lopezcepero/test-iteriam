@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { reduce } from 'rxjs/operators';
 
 import { formErrors } from 'src/app/shared/util';
 import { User } from 'src/app/shared/util/models/user.model';
@@ -13,6 +12,7 @@ import { User } from 'src/app/shared/util/models/user.model';
 })
 export class LoginFormComponent implements OnInit {
 
+  @Input() loading = false;
   @Output() login = new EventEmitter<User>();
   @Output() errors = new EventEmitter<string[]>();
 
@@ -24,8 +24,8 @@ export class LoginFormComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {
     this.loginForm = this.formBuilder.group(
       {
-        email: ['a@a.com', [Validators.required, Validators.email]],
-        password: ['12334535', [Validators.required, Validators.minLength(6)]],
+        email: ['test@iteriam.com', [Validators.required, Validators.email]],
+        password: ['123456', [Validators.required, Validators.minLength(6)]],
         rememberMe: [false]
       }
     );
@@ -57,15 +57,11 @@ export class LoginFormComponent implements OnInit {
     if (this.loginForm.valid) {
       this.login.emit(this.loginForm.value);
     } else {
-      console.log(errors);
-
       const errorMessages = this.errorValidations
         .filter(e => errors.find(error => error.controlName === e.controlName
           && Object.keys(error.errors || '').includes(e.validator)))
-          .map(e => e.errorMessage);
+        .map(e => e.errorMessage);
       this.errors.emit(errorMessages);
     }
   }
-
-  reducer = (accumulator, currentValue) => accumulator + currentValue;
 }
