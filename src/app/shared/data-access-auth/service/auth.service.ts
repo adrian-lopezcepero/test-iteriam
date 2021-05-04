@@ -2,6 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { finalize, first, takeLast } from 'rxjs/operators';
 import { User } from '../../util';
+import { LoginResponse } from '../models/login-response.model';
 import { AuthApiInterface } from './auth-api.interface';
 
 @Injectable({
@@ -18,20 +19,26 @@ export class AuthService {
 
   constructor(private authApi: AuthApiInterface) { }
 
-  public login(email: string, password: string): void {
-    this.isLoading.next(true);
-    this.authApi.login(email, password).pipe(
-      finalize(() => this.isLoading.next(false))
-    ).subscribe(
-      (user) => {
-        this.isLogged.next(true);
-        this.userSubject.next(user);
-      },
-      () => {
-        this.isLogged.next(false);
-      }
-    );
+
+  public login(email: string, password: string): Observable<LoginResponse> {
+    return this.authApi.login(email, password);
   }
+
+
+  // public login(email: string, password: string): void {
+  //   this.isLoading.next(true);
+  //   this.authApi.login(email, password).pipe(
+  //     finalize(() => this.isLoading.next(false))
+  //   ).subscribe(
+  //     (user) => {
+  //       this.isLogged.next(true);
+  //       this.userSubject.next(user);
+  //     },
+  //     () => {
+  //       this.isLogged.next(false);
+  //     }
+  //   );
+  // }
 
   logout() {
     this.isLogged.next(false);
