@@ -1,12 +1,13 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { authsFeatureKey, State, AuthPartialState } from './auth.reducer';
+import { authsFeatureKey, AuthState } from './auth.reducer';
 
-export const getAuthState = createFeatureSelector<AuthPartialState, State>(authsFeatureKey);
+export const getAuthState = createFeatureSelector<AuthState>(authsFeatureKey);
 
-export const getAuthLoaded = createSelector(getAuthState, (state: State) => state.loaded);
+export const getAuthLoaded = createSelector(getAuthState, (state: AuthState) => state.loaded);
 
-export const getAuthError = createSelector(getAuthState, (state: State) => state.error);
+export const getIsLogged = createSelector(getAuthState, (state: AuthState) => state.logged);
 
-export const getIsLogged = createSelector(getAuthState, (state: State) => state.logged);
+export const getToken = createSelector(getAuthState, (state: AuthState) => state.token);
 
-export const getToken = createSelector(getAuthState, (state: State) => state.token);
+export const getErrors = createSelector(getAuthState, (state: AuthState) => state.errors);
+

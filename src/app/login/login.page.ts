@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthFacade } from '../shared/data-access-auth/+state/auth.facade';
 
 import { AuthService } from '../shared/data-access-auth/service/auth.service';
 import { untilDestroyed, User } from '../shared/util';
@@ -13,39 +14,21 @@ import { untilDestroyed, User } from '../shared/util';
 export class LoginPage implements OnInit, OnDestroy {
 
 
-  errors: string[];
-  loading$ = this.authService.loading$;
+  errors$ = this.authFacade.errors$;
+  loaded$ = this.authFacade.loaded$;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authFacade: AuthFacade, private router: Router) { }
 
   ngOnInit() { }
 
-  ngOnDestroy(): void {
-    console.log('ondestroy');
-  }
+  ngOnDestroy(): void { }
 
   login(user: User): void {
-    this.authService.login(user.email, user.password);
-    this.authService.logged$.pipe(
-      untilDestroyed(this),
-    )
-      .subscribe(
-
-        (logged: boolean) => {
-          if (logged) {
-            this.errors = [];
-            this.router.navigateByUrl('home', {
-              replaceUrl: true
-            });
-          } else {
-            this.errors = ['Usuario o password incorrecto'];
-          }
-        }
-      );
+    this.authFacade.login(user.email, user.password);
   }
 
   onErrors(errors: string[]): void {
-    this.errors = errors;
+    this.authFacade.loginErrors(errors);
   }
 
 }

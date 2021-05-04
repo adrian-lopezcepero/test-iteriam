@@ -14,15 +14,19 @@ export class AuthFacade {
   loaded$ = this.store.pipe(select(AuthSelectors.getAuthLoaded));
   isLogged$ = this.store.pipe(select(AuthSelectors.getIsLogged));
   token$ = this.store.pipe(select(AuthSelectors.getToken));
-  error$ = this.store.pipe(select(AuthSelectors.getAuthError));
-
+  errors$ = this.store.pipe(select(AuthSelectors.getErrors));
+  
   constructor(private store: Store) {}
-
+  
   /**
    * Use the initialization action to perform one
    * or more tasks in your Effects.
    */
   login(username: string, password: string) {
     this.store.dispatch(AuthActions.loginUser({ username, password }));
+  }
+
+  loginErrors(errors: string[]) {
+    this.store.dispatch(AuthActions.loginValidationErrors({errors}));
   }
 }

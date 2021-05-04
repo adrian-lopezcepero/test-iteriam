@@ -1,9 +1,10 @@
 <div class="w-full h-full overflow-y-auto bg-cover bg-login">
-
   <div class="p-10 desktop:hidden">
     <img src="/assets/images/logo.jpg" class="object-cover mx-auto h-28 w-28" />
   </div>
-  <div class="mx-8 bg-white desktop:w-96 desktop:mx-auto desktop:mt-40 desktop:animate-rotate-vert-center">
+  <div
+    class="mx-8 bg-white desktop:w-96 desktop:mx-auto desktop:mt-40 desktop:animate-rotate-vert-center"
+  >
     <div class="hidden pt-8 desktop:block">
       <img
         src="/assets/images/logo.jpg"
@@ -18,10 +19,10 @@
       >
     </div>
     <app-login-form
-      [loading]="loading$ | async"
+      [loading]="(loaded$ | async) === false"
       (login)="this.login($event)"
       (errors)="this.onErrors($event)"
     ></app-login-form>
   </div>
-  <app-toast *ngIf="(loading$ | async) === false" [errors]="errors"></app-toast>
+  <app-toast [errors]="errors$ | async"></app-toast>
 </div>

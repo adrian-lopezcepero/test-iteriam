@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { TranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
-import { catchError, exhaustMap, map } from 'rxjs/operators';
+import { catchError, exhaustMap, map, tap } from 'rxjs/operators';
 import { AuthService } from '../service/auth.service';
 import * as AuthActions from './auth.actions';
 
@@ -18,12 +20,28 @@ export class AuthEffects {
           map((loginResponse) =>
             AuthActions.loginUserSuccess({ loginResponse })
           ),
-          catchError((error) => of(AuthActions.loginUserFailure(error)))
+          catchError((error) => of(AuthActions.loginUserFailure({
+            error: this.translate.instant('ERROR.BAD_CREDENTIALS')
+          })))
         )
       )
     )
   );
 
-  constructor(private actions$: Actions, private authService: AuthService) { }
+  navigateHome$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.loginUserSuccess),
+      tap(() => { this.router.navigateByUrl('home', { replaceUrl: true }); })
+    ),
+    {
+      dispatch: false
+    }
+  );
+
+  constructor(
+    private actions$: Actions, 
+    private authService: AuthService, 
+    private router: Router,
+    private translate: TranslateService) { }
 
 }

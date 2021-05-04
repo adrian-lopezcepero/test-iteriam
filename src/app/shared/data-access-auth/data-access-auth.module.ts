@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FirebaseApiService } from './service/firebase-api.service';
-import { AuthApiInterface } from './service/auth-api.interface';
 import { StoreModule } from '@ngrx/store';
-import * as fromAuth from './+state/reducers/auth.reducer';
 import * as fromAuth from './+state/auth.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './+state/auth.effects';
+import { AuthFacade } from './+state/auth.facade';
 
 
 
@@ -14,8 +12,9 @@ import { AuthEffects } from './+state/auth.effects';
   declarations: [],
   imports: [
     CommonModule,
-    StoreModule.forFeature(fromAuth.authsFeatureKey, fromAuth.reducer),
+    StoreModule.forFeature(fromAuth.authsFeatureKey, fromAuth.authReducer),
     EffectsModule.forFeature([AuthEffects])
-  ]
+  ],
+  providers: [AuthFacade]
 })
 export class DataAccessAuthModule { }
