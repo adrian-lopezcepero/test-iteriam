@@ -13,6 +13,7 @@ import { AuthApiInterface } from './shared/data-access-auth/service/auth-api.int
 import { FirebaseApiService } from './shared/data-access-auth/service/firebase-api.service';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { StoreModule } from '@ngrx/store';
 
 
 export const httpTranslateLoader = (http: HttpClient) => (new TranslateHttpLoader(http));
@@ -39,7 +40,14 @@ export const initialActionsTranslate = (translate: TranslateService) =>
         deps: [HttpClient],
       },
     }),
-    DataAccessAuthModule],
+    DataAccessAuthModule,
+    StoreModule.forRoot({}, {
+      runtimeChecks: {
+        strictActionImmutability: true,
+        strictStateImmutability: true,
+        strictActionTypeUniqueness: true
+      }
+    })],
   providers: [
     {
       provide: APP_INITIALIZER,

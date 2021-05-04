@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, CanLoad, Router } from '@angular/router';
 
 import { Observable } from 'rxjs';
-import { switchMap, switchMapTo, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 import { AuthService } from '../data-access-auth/service/auth.service';
 
