@@ -7,7 +7,7 @@ import { IteriamToggleComponent } from './iteriam-toggle/iteriam-toggle.componen
 import { ToastComponent } from './toast/toast.component';
 
 const EXPORTED_COMPONENTS = [IteriamInputComponent,IteriamToggleComponent, ToastComponent];
-const EXPORTED_IMPORTS = [FormsModule, ReactiveFormsModule, IonicModule];
+const EXPORTED_IMPORTS = [FormsModule, ReactiveFormsModule];
 
 @NgModule({
   declarations: [...EXPORTED_COMPONENTS],
