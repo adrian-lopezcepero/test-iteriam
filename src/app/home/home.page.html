@@ -1,11 +1,13 @@
 <ion-header>
-  <div class="w-full h-32 text-left bg-blue">
-    <p *ngIf="user$ | async as user" class="font-bold text-white">
+  <div class="flex flex-row w-full h-32 px-4 pt-4 bg-blue">
+    <p
+      *ngIf="user$ | async as user"
+      class="flex-grow inline-block font-bold text-white"
+    >
       Welcome home {{ user.email }}
-      <button class="button-primary" (click)="logout()">Log out</button>
     </p>
+    <a class="font-bold underline cursor-pointer" (click)="logout()">Log out</a>
   </div>
-
 </ion-header>
 
 <ion-content [fullscreen]="true">

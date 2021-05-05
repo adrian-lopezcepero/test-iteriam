@@ -1,5 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthFacade } from '../shared/data-access-auth/+state/auth.facade';
 import { AuthService } from '../shared/data-access-auth/service/auth.service';
 import { untilDestroyed } from '../shared/util';
 
@@ -10,23 +11,14 @@ import { untilDestroyed } from '../shared/util';
 })
 export class HomePage implements OnDestroy {
 
-  user$ = this.authService.user;
+  user$ = this.authFacade.user$;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authFacade: AuthFacade) { }
 
   ngOnDestroy(): void { }
 
   logout() {
-    this.authService.logout();
-    this.authService.logged$.pipe(
-      untilDestroyed(this)
-    ).subscribe(
-      () => {
-        this.router.navigateByUrl('/login', {
-          replaceUrl: true
-        });
-      }
-    );
+    this.authFacade.logOut();
   }
 
 }

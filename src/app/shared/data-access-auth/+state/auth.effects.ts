@@ -38,9 +38,19 @@ export class AuthEffects {
     }
   );
 
+  navigateLogin$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.logOut),
+      tap(() => { this.router.navigateByUrl('login', { replaceUrl: true }); })
+    ),
+    {
+      dispatch: false
+    }
+  );
+
   constructor(
-    private actions$: Actions, 
-    private authService: AuthService, 
+    private actions$: Actions,
+    private authService: AuthService,
     private router: Router,
     private translate: TranslateService) { }
 

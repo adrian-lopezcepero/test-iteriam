@@ -1,4 +1,5 @@
 import { Action, createReducer, on } from '@ngrx/store';
+import { User } from '../../util';
 import * as AuthActions from './auth.actions';
 
 export const authsFeatureKey = 'auth';
@@ -7,6 +8,7 @@ export interface AuthState {
   loaded: boolean | null;
   logged: boolean;
   token?: string;
+  user?: User;
   errors: string[];
 }
 
@@ -27,6 +29,7 @@ export const authReducer = createReducer(
     loaded: true,
     logged: true,
     token: action.loginResponse.token,
+    user: { email: action.loginResponse.email },
     errors: []
   })),
   on(AuthActions.loginUserFailure, (state, action) => ({
@@ -35,8 +38,9 @@ export const authReducer = createReducer(
     logged: false,
     errors: [action.error]
   })),
+  on(AuthActions.loginValidationErrors, (state, action) => ({ ...state, errors: action.errors })),
 
-  on(AuthActions.loginValidationErrors, (state, action) => ({ ...state, errors: action.errors }))
+  on(AuthActions.logOut, (state, action) => ({...initialState}))
 );
 
 const reducer = (state: AuthState | undefined, action: Action) => (authReducer(state, action));

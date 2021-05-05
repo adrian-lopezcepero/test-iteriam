@@ -11,3 +11,5 @@ export const getToken = createSelector(getAuthState, (state: AuthState) => state
 
 export const getErrors = createSelector(getAuthState, (state: AuthState) => state.errors);
 
+export const getUser = createSelector(getAuthState, (state: AuthState) => state.user);
+

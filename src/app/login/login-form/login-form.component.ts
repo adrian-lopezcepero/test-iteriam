@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { TranslateService } from '@ngx-translate/core';
 
 import { formErrors } from 'src/app/shared/util';
-import { User } from 'src/app/shared/util/models/user.model';
+import { emailRegex } from 'src/app/shared/util/validator';
 
 @Component({
   selector: 'app-login-form',
@@ -14,19 +14,19 @@ import { User } from 'src/app/shared/util/models/user.model';
 export class LoginFormComponent implements OnInit {
 
   @Input() loading = false;
-  @Output() login = new EventEmitter<User>();
+  @Output() login = new EventEmitter<{ email: string; password: string }>();
   @Output() errors = new EventEmitter<string[]>();
 
   loginForm: FormGroup;
   emailValid = true;
   passwordValid = true;
-  errorValidations: { controlName: string; validator: string; errorMessage: string; }[];
+  errorValidations: { controlName: string; validator: string; errorMessage: string }[];
 
   constructor(private formBuilder: FormBuilder, private translate: TranslateService) {
     this.loginForm = this.formBuilder.group(
       {
-        email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(6)]],
+        email: ['test@iteriam.com', [Validators.required, Validators.pattern(emailRegex)]],
+        password: ['123456', [Validators.required, Validators.minLength(6)]],
         rememberMe: [false]
       }
     );
@@ -39,7 +39,7 @@ export class LoginFormComponent implements OnInit {
         errorMessage: this.translate.instant('ERROR.REQUIRED', { controlName: 'email' })
       },
       {
-        controlName: 'email', validator: 'email',
+        controlName: 'email', validator: 'pattern',
         errorMessage: this.translate.instant('ERROR.EMAIL')
       },
       {

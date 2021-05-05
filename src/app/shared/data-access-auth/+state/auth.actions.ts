@@ -9,3 +9,5 @@ export const loginUserSuccess = createAction('[Auth/API] Login User Success', pr
 export const loginUserFailure = createAction('[Auth/API] Login User Failure', props<{ error: string }>());
 
 export const loginValidationErrors = createAction('[Auth/API] Login Validation Errors', props<{ errors: string[] }>());
+
+export const logOut = createAction('[Auth/API] Logout User');

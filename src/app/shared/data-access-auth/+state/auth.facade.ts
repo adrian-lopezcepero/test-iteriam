@@ -15,6 +15,7 @@ export class AuthFacade {
   isLogged$ = this.store.pipe(select(AuthSelectors.getIsLogged));
   token$ = this.store.pipe(select(AuthSelectors.getToken));
   errors$ = this.store.pipe(select(AuthSelectors.getErrors));
+  user$ = this.store.pipe(select(AuthSelectors.getUser));
   
   constructor(private store: Store) {}
   
@@ -25,8 +26,12 @@ export class AuthFacade {
   login(username: string, password: string) {
     this.store.dispatch(AuthActions.loginUser({ username, password }));
   }
-
+  
   loginErrors(errors: string[]) {
     this.store.dispatch(AuthActions.loginValidationErrors({errors}));
+  }
+
+  logOut() {
+    this.store.dispatch(AuthActions.logOut());
   }
 }
