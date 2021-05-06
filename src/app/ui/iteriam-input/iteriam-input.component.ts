@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { AbstractControl, FormControl, ValidationErrors, Validator } from '@angular/forms';
 
 @Component({
   selector: 'app-iteriam-input',
@@ -8,18 +8,10 @@ import { FormControl } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class IteriamInputComponent {
-
-  @Input()
-  placeholder = '';
-  @Input()
-  inputType = 'text';
-  @Input()
-  icon: string | null = null;
+  @Input() placeholder = '';
+  @Input() inputType = 'text';
+  @Input() icon: string | null = null;
   @Input() control: FormControl | null = null;
   @Input() isValid = true;
-
-  maxLength: number;
-  minLength: number;
-
 
 }

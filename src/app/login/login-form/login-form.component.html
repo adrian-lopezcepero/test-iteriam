@@ -5,22 +5,27 @@
 >
   <div class="px-6 py-4">
     <app-iteriam-input
+      id="email"
       [control]="email"
       [inputType]="'email'"
       [icon]="'person-outline'"
       placeholder="{{ 'EMAIL' | translate }}"
+      [ngClass]="{ invalid: !emailValid }"
       [isValid]="emailValid"
     ></app-iteriam-input>
 
     <app-iteriam-input
+      id="password"
       [control]="password"
       [inputType]="'password'"
       [icon]="'lock-closed-outline'"
       placeholder="{{ 'PASSWORD' | translate }}"
+      [ngClass]="{ invalid: !passwordValid }"
       [isValid]="passwordValid"
     ></app-iteriam-input>
 
     <app-iteriam-toggle
+      id="rememberMe"
       formControlName="rememberMe"
       label="{{ 'REMEMBER' | translate }}"
     ></app-iteriam-toggle>

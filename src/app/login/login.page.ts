@@ -7,15 +7,13 @@ import { User } from '../shared/util';
   styleUrls: ['./login.page.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoginPage implements OnInit, OnDestroy {
+export class LoginPage implements OnDestroy {
 
 
   errors$ = this.authFacade.errors$;
   loaded$ = this.authFacade.loaded$;
 
   constructor(private authFacade: AuthFacade) { }
-
-  ngOnInit() { }
 
   ngOnDestroy(): void { }
 

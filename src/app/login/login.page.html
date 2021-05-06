@@ -19,10 +19,11 @@
       >
     </div>
     <app-login-form
+      class="login-form"
       [loading]="(loaded$ | async) === false"
       (login)="this.login($event)"
       (errors)="this.onErrors($event)"
     ></app-login-form>
   </div>
-  <app-toast [errors]="errors$ | async"></app-toast>
+  <app-toast class="error-toast" [errors]="errors$ | async"></app-toast>
 </div>

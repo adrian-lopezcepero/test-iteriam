@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { provideMockStore, MockStore } from '@ngrx/store/testing';
 import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
+import { from } from 'rxjs';
 import { AuthFacade } from '../shared/data-access-auth/+state/auth.facade';
 import { AuthState } from '../shared/data-access-auth/+state/auth.reducer';
 import * as AuthSelectors from '../shared/data-access-auth/+state/auth.selectors';
@@ -12,7 +14,7 @@ describe('LoginPage', () => {
   const initialState: AuthState = { loaded: null, logged: false, errors: [] };
 
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [LoginPage],
       imports: [TranslateModule.forRoot({
@@ -31,14 +33,32 @@ describe('LoginPage', () => {
         }),
         AuthFacade
       ]
-    }).compileComponents();
+    });
 
     fixture = TestBed.createComponent(LoginPage);
     component = fixture.componentInstance;
-    fixture.detectChanges();
-  }));
+  });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should toast errors on login errors', async () => {
+    const errorMessage = 'Usuario o password incorrecto';
+    const errors = [errorMessage];
+    component.errors$.subscribe(() => from(errors));
+
+    const toast = fixture.debugElement.query(By.css('.error-toast')).nativeElement.value;
+    
+    const form = fixture.debugElement.query(By.css('.login-form'));
+    form.triggerEventHandler('errors', errors);
+
+    fixture.whenStable().then(()=> {
+      expect(JSON.stringify(toast)).toContain(errorMessage);
+    });
+
+
+  });
+
+
 });

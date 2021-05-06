@@ -14,7 +14,7 @@ import { emailRegex } from 'src/app/shared/util/validator';
 export class LoginFormComponent implements OnInit {
 
   @Input() loading = false;
-  @Output() login = new EventEmitter<{ email: string; password: string }>();
+  @Output() login = new EventEmitter<{ email: string; password: string; rememberMe: boolean}>();
   @Output() errors = new EventEmitter<string[]>();
 
   loginForm: FormGroup;
@@ -60,8 +60,6 @@ export class LoginFormComponent implements OnInit {
   public get password(): FormControl {
     return this.loginForm.controls.password as FormControl;
   }
-
-
 
   submit(): void {
     const errors = formErrors(this.loginForm);
