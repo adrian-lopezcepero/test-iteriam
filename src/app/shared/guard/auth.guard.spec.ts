@@ -41,7 +41,7 @@ describe('AuthGuard', () => {
         provideMockStore({
           initialState: { errors: [], loaded: false, logged: false },
           selectors: [
-            { selector: AuthSelectors.getAuthLoaded, value: false },
+            { selector: AuthSelectors.getIsLogged, value: logged },
           ]
         }),
         { provide: AuthApiInterface, useValue: {} }
