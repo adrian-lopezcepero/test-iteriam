@@ -34,6 +34,7 @@
     "commitlint": "^12.1.1",
     "firebase": "^8.4.2",
     "firebase-admin": "^9.6.0",
+    "jasmine-marbles": "^0.8.1",
     "rxjs": "~6.6.0",
     "tailwindcss-ripple": "^0.6.0",
     "tslib": "^2.0.0",
