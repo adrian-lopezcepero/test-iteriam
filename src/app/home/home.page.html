@@ -2,11 +2,11 @@
   <div class="flex flex-row w-full h-32 px-4 pt-4 bg-blue">
     <p
       *ngIf="user$ | async as user"
-      class="flex-grow inline-block font-bold text-white"
+      class="user-data flex-grow inline-block font-bold text-white"
     >
       Welcome home {{ user.email }}
     </p>
-    <a class="font-bold underline cursor-pointer" (click)="logout()">Log out</a>
+    <a id="logutButton" class="text-white font-bold underline cursor-pointer" (click)="logout()">Log out</a>
   </div>
 </ion-header>
 

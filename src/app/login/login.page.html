@@ -25,5 +25,5 @@
       (errors)="this.onErrors($event)"
     ></app-login-form>
   </div>
-  <app-toast class="error-toast" [errors]="errors$ | async"></app-toast>
+  <app-toast id = "toast" class="error-toast" [errors]="errors$ | async"></app-toast>
 </div>

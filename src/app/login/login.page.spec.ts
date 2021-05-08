@@ -14,8 +14,13 @@ describe('LoginPage', () => {
   const initialState: AuthState = { loaded: null, logged: false, errors: [] };
   let facade: AuthFacade;
 
+  it('should create', () => {
+    setup(initialState);
+    expect(component).toBeTruthy();
+  });
 
-  beforeEach(() => {
+
+  const setup = (stateConfig: AuthState = initialState) => {
     TestBed.configureTestingModule({
       declarations: [LoginPage],
       imports: [TranslateModule.forRoot({
@@ -27,9 +32,9 @@ describe('LoginPage', () => {
       ],
       providers: [
         provideMockStore({
-          initialState, selectors: [
-            { selector: AuthSelectors.getAuthLoaded, value: true },
-            { selector: AuthSelectors.getErrors, value: [] },
+          initialState: stateConfig, selectors: [
+            { selector: AuthSelectors.getAuthLoaded, value: stateConfig.loaded },
+            { selector: AuthSelectors.getErrors, value: stateConfig.errors },
           ]
         }),
         AuthFacade
@@ -39,28 +44,6 @@ describe('LoginPage', () => {
     fixture = TestBed.createComponent(LoginPage);
     component = fixture.componentInstance;
     facade = TestBed.inject(AuthFacade);
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
-  xit('should toast errors on login errors', async () => {
-    const errorMessage = 'Usuario o password incorrecto';
-    const errors = [errorMessage];
-    component.errors$.subscribe(() => errors);
-
-    const toast = fixture.debugElement.query(By.css('.error-toast')).nativeElement.value;
-    
-    const form = fixture.debugElement.query(By.css('.login-form'));
-    form.triggerEventHandler('errors', errors);
-
-    fixture.whenStable().then(()=> {
-      expect(JSON.stringify(toast)).toContain(errorMessage);
-    });
-
-
-  });
-
+  };
 
 });
