@@ -25,8 +25,8 @@ export class LoginFormComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private translate: TranslateService) {
     this.loginForm = this.formBuilder.group(
       {
-        email: ['test@iteriam.com', [Validators.required, Validators.pattern(emailRegex)]],
-        password: ['123456', [Validators.required, Validators.minLength(6)]],
+        email: ['', [Validators.required, Validators.pattern(emailRegex)]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
         rememberMe: [false]
       }
     );
@@ -44,11 +44,11 @@ export class LoginFormComponent implements OnInit {
       },
       {
         controlName: 'password', validator: 'required',
-        errorMessage: this.translate.instant('ERROR.REQUIRED', { controlName: 'password' })
+        errorMessage: this.translate.instant('ERROR.REQUIRED', { controlName: 'contraseña' })
       },
       {
         controlName: 'password', validator: 'minlength',
-        errorMessage: this.translate.instant('ERROR.MIN_LENGTH', { controlName: 'password', length: 5 })
+        errorMessage: this.translate.instant('ERROR.MIN_LENGTH', { controlName: 'contraseña', length: 5 })
       }
     ];
   }

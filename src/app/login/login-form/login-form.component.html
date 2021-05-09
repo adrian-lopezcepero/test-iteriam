@@ -5,6 +5,7 @@
 >
   <div class="px-6 py-4">
     <app-iteriam-input
+      role="input"
       id="email"
       [control]="email"
       [inputType]="'email'"
@@ -25,12 +26,18 @@
     ></app-iteriam-input>
 
     <app-iteriam-toggle
+      role="input"
       id="rememberMe"
       formControlName="rememberMe"
       label="{{ 'REMEMBER' | translate }}"
     ></app-iteriam-toggle>
   </div>
-  <button type="submit" class="button-primary" [disabled]="this.loading">
+  <button
+    role="button"
+    type="submit"
+    class="button-primary"
+    [disabled]="this.loading"
+  >
     <p *ngIf="!loading">{{ "ACCESS" | translate }}</p>
     <p *ngIf="loading" class="animate-pulse">
       {{ "APP.LOADING" | translate }}

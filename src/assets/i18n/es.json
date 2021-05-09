@@ -7,7 +7,7 @@
   "ERROR": {
     "REQUIRED": "El campo {{ controlName }} es obligatorio",
     "EMAIL": "El formato del email no es correcto",
-    "MIN_LENGTH": "El {{controlName}} debe ser mayor de {{length}} caracteres",
+    "MIN_LENGTH": "El campo {{controlName}} debe ser mayor de {{length}} caracteres",
     "BAD_CREDENTIALS": "Usuario o password incorrecto"
   },
   "ACCESS": "Acceder",
