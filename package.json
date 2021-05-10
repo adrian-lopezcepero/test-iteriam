@@ -10,7 +10,7 @@
     "build": "ng build",
     "browser:build:pro": "npm run prebuild && ng build --output-path public --prod && firebase deploy --except functions",
     "test": "ng test",
-    "test:coverage": "ng test --no-watch --code-coverage --browsers=Chrome",
+    "test:coverage": "ng test --code-coverage --browsers=Chrome",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "e2e:ci": "start-server-and-test start http://localhost:4200 cy:run",
