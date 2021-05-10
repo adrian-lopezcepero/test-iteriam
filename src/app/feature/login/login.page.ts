@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { AuthFacade } from '../shared/data-access-auth/+state/auth.facade';
-import { User } from '../shared/util';
+import { AuthFacade } from '../../shared/data-access-auth/+state/auth.facade';
+import { User } from '../../shared/util';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',

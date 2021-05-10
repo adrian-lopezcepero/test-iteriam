@@ -3,7 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Observable, of, throwError } from 'rxjs';
-import { HomePage } from 'src/app/home/home.page';
+import { HomePage } from '@app/feature/home/home.page';
 import { LoginPage } from 'src/app/login/login.page';
 import { AuthService } from '../service/auth.service';
 
