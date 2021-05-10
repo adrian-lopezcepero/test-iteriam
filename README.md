@@ -16,18 +16,51 @@ Source code: https://github.com/adrian-lopezcepero/test-iteriam
 - [Documentation](#Documentation)
 - [Licende](#License)
 
-## Start up
+## **Start up**
+
+# Init
 
 1. Run `npm i`
 2. Run `npm run start`
 
-## Description
+# Testing
+
+1. npm run test
+2. npm run e2e
+
+# Deploy
+
+1. Run `npm run browser:build:pro`
+
+## **Description**
 
 We provide a short descriptions of the architecture of the app:
 
+**Angular**
+
+- **Feature and shared modules
+- **Lazy loading modules
+- **Tailwindcss to easy mockup
+- **i18n
+
+**NgRx**
+
+- **Use of NgRx as state management
+- **Application of the Redux pattern
+
+**Testing**
+
+- **Jasmine and Karma for unit and integration testing
+- **Cypress testing library to perform e2e tests.
+
+**Other**
+
+- **Applied husky hooks and commit lint** to use conventional commits to prevent bad practices on code.
+- **eslint and stylelint** as lint tools
+- **Git Flow**
 
 
-## Documentation
+## **Documentation**
 
 [Ionic guide](https://ionicframework.com/docs/intro/cli)
 [Husky hooks](https://typicode.github.io/husky/#/)
@@ -38,6 +71,6 @@ We provide a short descriptions of the architecture of the app:
 [Firebase](https://firebase.google.com/)
 [Tailwindcss](https://tailwindcss.com/)
 
-## License
+## **License
 
 [MIT](https://choosealicense.com/licenses/mit/)
