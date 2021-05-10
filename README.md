@@ -38,20 +38,20 @@ We provide a short descriptions of the architecture of the app:
 
 **Angular**
 
-- **Feature and shared modules
-- **Lazy loading modules
-- **Tailwindcss to easy mockup
-- **i18n
+- **Feature and shared modules**
+- **Lazy loading modules**
+- **Tailwindcss to easy mockup**
+- **i18n**
 
 **NgRx**
 
-- **Use of NgRx as state management
-- **Application of the Redux pattern
+- **Use of NgRx as state management**
+- **Application of the Redux pattern**
 
 **Testing**
 
-- **Jasmine and Karma for unit and integration testing
-- **Cypress testing library to perform e2e tests.
+- **Jasmine and Karma for unit and integration testing**
+- **Cypress testing library to perform e2e tests**
 
 **Other**
 
@@ -71,6 +71,6 @@ We provide a short descriptions of the architecture of the app:
 [Firebase](https://firebase.google.com/)
 [Tailwindcss](https://tailwindcss.com/)
 
-## **License
+## **License**
 
 [MIT](https://choosealicense.com/licenses/mit/)
