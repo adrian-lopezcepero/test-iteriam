@@ -4,7 +4,7 @@ import { provideMockActions } from '@ngrx/effects/testing';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Observable, of, throwError } from 'rxjs';
 import { HomePage } from '@app/feature/home/home.page';
-import { LoginPage } from 'src/app/login/login.page';
+import { LoginPage } from 'src/app/feature/login/login.page';
 import { AuthService } from '../service/auth.service';
 
 import { AuthEffects } from './auth.effects';

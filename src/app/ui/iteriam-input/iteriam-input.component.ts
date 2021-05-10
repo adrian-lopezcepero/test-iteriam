@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
-import { AbstractControl, FormControl, ValidationErrors, Validator } from '@angular/forms';
+import { FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-iteriam-input',

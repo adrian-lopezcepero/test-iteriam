@@ -7,7 +7,7 @@ import { takeUntil } from 'rxjs/operators';
 const isFunction = (value: unknown) => (typeof value === 'function');
 
 export const untilDestroyed = (componentInstance, destroyMethodName = 'ngOnDestroy') => <T>(source: Observable<T>) => {
-    
+
   const originalDestroy = componentInstance[destroyMethodName];
   if (isFunction(originalDestroy) === false) {
     throw new Error(
@@ -17,7 +17,7 @@ export const untilDestroyed = (componentInstance, destroyMethodName = 'ngOnDestr
   if (!componentInstance['__takeUntilDestroy']) {
     componentInstance['__takeUntilDestroy'] = new Subject();
 
-    componentInstance[destroyMethodName] = function() {
+    componentInstance[destroyMethodName] = function () {
       isFunction(originalDestroy) && originalDestroy.apply(this, arguments);
       componentInstance['__takeUntilDestroy'].next(true);
       componentInstance['__takeUntilDestroy'].complete();

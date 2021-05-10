@@ -12,7 +12,7 @@ const EXPORTED_IMPORTS = [FormsModule, ReactiveFormsModule];
 @NgModule({
   declarations: [...EXPORTED_COMPONENTS],
   imports: [
-    CommonModule, ...EXPORTED_IMPORTS
+    CommonModule, IonicModule,...EXPORTED_IMPORTS
   ],
   exports: [...EXPORTED_IMPORTS, ...EXPORTED_COMPONENTS]
 })

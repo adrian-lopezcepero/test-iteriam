@@ -1,12 +1,6 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { provideMockStore, MockStore, getMockStore } from '@ngrx/store/testing';
-import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
-import { userInfo } from 'node:os';
-import { EMPTY, Observable } from 'rxjs';
-import { AuthFacade } from '../shared/data-access-auth/+state/auth.facade';
-import { AuthState } from '../shared/data-access-auth/+state/auth.reducer';
-import * as AuthSelectors from '../shared/data-access-auth/+state/auth.selectors';
-import { User } from '../shared/util';
+import {getMockStore } from '@ngrx/store/testing';
+import { AuthFacade } from '../../shared/data-access-auth/+state/auth.facade';
+import { User } from '../../shared/util';
 import { LoginPage } from './login.page';
 
 describe('LoginPage', () => {

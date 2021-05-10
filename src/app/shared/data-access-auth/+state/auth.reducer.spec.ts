@@ -4,7 +4,6 @@ import * as authActions from './auth.actions';
 describe('Auth reducer', () => {
   it('should return the default state', () => {
     const { initialState } = fromReducer;
-    
     const action = {
       type: 'Unknown',
     };
@@ -57,7 +56,7 @@ describe('Auth reducer', () => {
     const newState: fromReducer.AuthState = {
       ...initialState, loaded: false, logged: false
     };
-    
+
     const action = authActions.loginUser({
       username: 'test@iteriam.com',
       password: '123456'

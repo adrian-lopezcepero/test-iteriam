@@ -5,10 +5,11 @@
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve -o",
     "build": "ng build",
     "browser:build:pro": "ng build --output-path public --prod && firebase deploy --except functions",
     "test": "ng test",
+    "test:coverage": "ng test --no-watch --code-coverage --browsers=Chrome",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "prepare": "husky install"
