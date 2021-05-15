@@ -7,6 +7,8 @@ Iteriam Login is test performed to access iteriam services.
 User: test@iteriam.com
 Password: 123456
 
+*** Be careful with firewall and proxy configurations. You must have internet access to perform Firebase login successfully  ***
+
 Source code: https://github.com/adrian-lopezcepero/test-iteriam
 
 ## Table of Contents
@@ -26,7 +28,7 @@ Source code: https://github.com/adrian-lopezcepero/test-iteriam
 # Testing
 
 1. npm run test
-2. npm run e2e
+2. npm run e2e or npm run e2e:ci
 
 # Deploy
 

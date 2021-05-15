@@ -1,5 +1,6 @@
+import { User } from '@app/shared/util';
 import { AuthState } from './auth.reducer';
-import { getAuthLoaded, getAuthState, getErrors, getToken, getUser } from './auth.selectors';
+import { getAuthLoaded, getAuthState, getErrors, getIsLogged, getToken, getUser } from './auth.selectors';
 
 describe('Auth Selectors', () => {
 
@@ -20,7 +21,7 @@ describe('Auth Selectors', () => {
   });
 
   it('should select the logged ', () => {
-    const result = getAuthLoaded.projector(initialState.logged);
+    const result = getIsLogged.projector(initialState.logged);
     expect(result).toBeFalsy();
   });
 
@@ -34,9 +35,21 @@ describe('Auth Selectors', () => {
     expect(result).toBeUndefined();
   });
 
-  it('should select the user ', () => {
+  it('should return nothing when select the user ', () => {
     const result = getUser.projector(initialState.user);
     expect(result).toBeUndefined();
   });
+
+  it('should return nothing', () => {
+    const result = getAuthState.projector(null);
+    expect(result).toBeNull();
+  });
+
+  it('should select the user ', () => {
+    const user: User = { email: '', password: '', rememberMe: true };
+    const result = getUser.projector({ user });
+    expect(result).toBeTruthy();
+  });
+
 
 });

@@ -1,7 +1,7 @@
 import { exists } from 'node:fs';
 
 
-describe('LoginPage', () => {
+describe('HomePage', () => {
   const validEmail = 'test@iteriam.com';
   const validPassword = '123456';
 
