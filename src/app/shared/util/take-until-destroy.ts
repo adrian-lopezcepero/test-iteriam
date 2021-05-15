@@ -14,14 +14,16 @@ export const untilDestroyed = (componentInstance, destroyMethodName = 'ngOnDestr
       `${componentInstance.constructor.name} is using untilDestroyed but doesn't implement ${destroyMethodName}`
     );
   }
-  if (!componentInstance['__takeUntilDestroy']) {
-    componentInstance['__takeUntilDestroy'] = new Subject();
+  if (!componentInstance.takeUntilDestroy) {
+    componentInstance.takeUntilDestroy = new Subject();
 
-    componentInstance[destroyMethodName] = function () {
-      isFunction(originalDestroy) && originalDestroy.apply(this, arguments);
-      componentInstance['__takeUntilDestroy'].next(true);
-      componentInstance['__takeUntilDestroy'].complete();
+    componentInstance[destroyMethodName] = function() {
+      if (isFunction(originalDestroy) ) {
+        originalDestroy.apply(this, arguments);
+      }
+      componentInstance.takeUntilDestroy.next(true);
+      componentInstance.takeUntilDestroy.complete();
     };
   }
-  return source.pipe(takeUntil<T>(componentInstance['__takeUntilDestroy']));
+  return source.pipe(takeUntil<T>(componentInstance.takeUntilDestroy));
 };

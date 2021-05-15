@@ -6,7 +6,7 @@
   <div class="px-6 py-4">
     <app-iteriam-input
       role="input"
-      id="email"
+      class="email"
       [control]="email"
       [inputType]="'email'"
       [icon]="'person-outline'"
@@ -16,7 +16,7 @@
     ></app-iteriam-input>
 
     <app-iteriam-input
-      id="password"
+      class="password"
       [control]="password"
       [inputType]="'password'"
       [icon]="'lock-closed-outline'"
@@ -27,7 +27,7 @@
 
     <app-iteriam-toggle
       role="input"
-      id="rememberMe"
+      class="rememberMe"
       formControlName="rememberMe"
       label="{{ 'REMEMBER' | translate }}"
     ></app-iteriam-toggle>

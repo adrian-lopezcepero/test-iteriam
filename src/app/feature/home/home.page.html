@@ -2,14 +2,14 @@
   <div class="flex flex-row w-full h-32 px-4 pt-4 bg-blue">
     <p
       *ngIf="user$ | async as user"
-      class="user-data flex-grow inline-block font-bold text-white"
+      class="flex-grow inline-block font-bold text-white user-data"
     >
       Welcome home {{ user.email }}
     </p>
-    <a id="logutButton" class="text-white font-bold underline cursor-pointer" (click)="logout()">Log out</a>
+    <a class="font-bold text-white underline cursor-pointer  logoutButton" (click)="logout()">Log out</a>
   </div>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div id="container"></div>
+  <div class="container"></div>
 </ion-content>

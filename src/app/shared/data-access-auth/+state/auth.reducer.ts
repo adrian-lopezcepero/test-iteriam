@@ -1,4 +1,4 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { Action, ActionReducer, createReducer, on } from '@ngrx/store';
 import { User } from '../../util';
 import * as AuthActions from './auth.actions';
 
@@ -20,11 +20,11 @@ export const initialState: AuthState = {
 };
 
 
-export const authReducer = createReducer(
+export const authReducer: ActionReducer<AuthState, any> = createReducer(
   initialState,
-  on(AuthActions.loginUser, (state) => ({ ...state, loaded: false, logged: false })
+  on(AuthActions.loginUser, (state: AuthState) => ({ ...state, loaded: false, logged: false })
   ),
-  on(AuthActions.loginUserSuccess, (state, action) => ({
+  on(AuthActions.loginUserSuccess, (state: AuthState, action: ReturnType<typeof AuthActions.loginUserSuccess>) => ({
     ...state,
     loaded: true,
     logged: true,
@@ -32,15 +32,16 @@ export const authReducer = createReducer(
     user: { email: action.loginResponse.email },
     errors: []
   })),
-  on(AuthActions.loginUserFailure, (state, action) => ({
+  on(AuthActions.loginUserFailure, (state: AuthState, action: ReturnType<typeof AuthActions.loginUserFailure>) => ({
     ...state,
     loaded: true,
     logged: false,
     errors: [action.error]
   })),
-  on(AuthActions.loginValidationErrors, (state, action) => ({ ...state, errors: action.errors })),
+  on(AuthActions.loginValidationErrors,
+    (state: AuthState, action: ReturnType<typeof AuthActions.loginValidationErrors>) => ({ ...state, errors: action.errors })),
 
-  on(AuthActions.logOut, (state, action) => ({...initialState}))
+  on(AuthActions.logOut, (state: AuthState, action: ReturnType<typeof AuthActions.logOut>) => ({ ...initialState }))
 );
 
-export const reducer = (state: AuthState | undefined, action: Action) => (authReducer(state, action));
+export const reducer = (state: AuthState | undefined, action: Action): AuthState => (authReducer(state, action));

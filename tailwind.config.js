@@ -34,21 +34,8 @@ module.exports = {
         'login': "url('/assets/images/background.jpg')"
       }),
 
-      // ANIMATIONS
-      keyframes: {
-        'fade-in-down': {
-          '0%': {
-            opacity: '0',
-            transform: 'translateY(-10px)'
-          },
-          '100%': {
-            opacity: '1',
-            transform: 'translateY(0)'
-          },
-        }
-      },
       animation: {
-        'fade-in-down': 'fade-in-down 0.5s ease-out',
+        "scale-in-ver-top": "scale-in-ver-top 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940)   both",
         'flip-vertical-bck': 'flip-vertical-bck 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955)   both',
         "rotate-vert-center": 'rotate-vert-center 3s cubic-bezier(0.455, 0.030, 0.515, 0.955)   both',
         'scale-up-center': 'scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000)   both'
@@ -69,13 +56,25 @@ module.exports = {
           to: {
             transform: "rotateY(360deg)"
           },
+        },
           "scale-up-center": {
-            "0%": {
-              transform: "scale(.5)"
-            },
-            to: {
-              transform: "scale(1)"
-            }
+          "0%": {
+            transform: "scale(.5)"
+          },
+          to: {
+            transform: "scale(1)"
+          }
+        },
+        "scale-in-ver-top": {
+          "0%": {
+            transform: "scaleY(0)",
+            "transform-origin": "100% 0%",
+            opacity: "1"
+          },
+          to: {
+            transform: "scaleY(1)",
+            "transform-origin": "100% 0%",
+            opacity: "1"
           }
         }
       }

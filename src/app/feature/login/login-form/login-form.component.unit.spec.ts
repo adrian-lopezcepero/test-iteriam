@@ -2,7 +2,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { LoginFormComponent } from './login-form.component';
 
-describe('LoginFormComponent', () => {
+describe('LoginFormComponent unit', () => {
   let component: LoginFormComponent;
   let email: FormControl;
   let password: FormControl;

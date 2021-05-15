@@ -39,7 +39,7 @@ describe('LoginFormComponent', () => {
     component.passwordValid = false;
     fixture.detectChanges();
 
-    const de = fixture.debugElement.query(By.css('#password'));
+    const de = fixture.debugElement.query(By.css('.password'));
 
     expect(de.classes.invalid).toBeTruthy();
   });
@@ -48,16 +48,16 @@ describe('LoginFormComponent', () => {
     component.emailValid = false;
     fixture.detectChanges();
 
-    const de = fixture.debugElement.query(By.css('#email'));
+    const de = fixture.debugElement.query(By.css('.email'));
 
     expect(de.classes.invalid).toBeTruthy();
   });
 
   it('should send form', async () => {
     const email = 'test@email.com';
-    fixture.debugElement.query(By.css('#email')).nativeElement.value = email;
+    fixture.debugElement.query(By.css('.email')).nativeElement.value = email;
     const password = '123456';
-    fixture.debugElement.query(By.css('#password')).nativeElement.value = password;
+    fixture.debugElement.query(By.css('.password')).nativeElement.value = password;
 
     let formEmmittled = null;
     component.login.subscribe((value) => formEmmittled = value);

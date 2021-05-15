@@ -48,7 +48,7 @@ describe('HomePage', () => {
     const spy = spyOn(component, 'logout');
     const facadeSpy = spyOn(facade, 'logOut');
 
-    const de = fixture.debugElement.query(By.css('#logutButton'));
+    const de = fixture.debugElement.query(By.css('.logoutButton'));
     de.triggerEventHandler('click', {});
 
     expect(spy).toHaveBeenCalled();

@@ -75,7 +75,7 @@ describe('Auth reducer', () => {
       logged: false,
       errors: ['Usuario o contraseña inválida']
     };
-    
+
     const action = authActions.loginUserFailure({
       error: 'Usuario o contraseña inválida'
     });
@@ -92,7 +92,7 @@ describe('Auth reducer', () => {
       logged: false,
       errors: ['Email not valid']
     };
-    
+
     const action = authActions.loginValidationErrors({
       errors: ['Email not valid']
     });
@@ -104,8 +104,8 @@ describe('Auth reducer', () => {
 
   it('should change state to initial state on log out', () => {
     const { initialState } = fromReducer;
-    const newState: fromReducer.AuthState = {...initialState};
-    
+    const newState: fromReducer.AuthState = { ...initialState };
+
     const action = authActions.logOut();
     const state = fromReducer.reducer(initialState, action);
 
