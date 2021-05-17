@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import { AuthFacade } from '../../shared/data-access-auth/+state/auth.facade';
+import { AuthFacade } from '../../core/data-access-auth/+state/auth.facade';
 
 @Component({
   selector: 'app-home',

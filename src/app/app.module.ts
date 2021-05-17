@@ -8,43 +8,31 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { DataAccessAuthModule } from './shared/data-access-auth/data-access-auth.module';
-import { AuthApiInterface } from './shared/data-access-auth/service/auth-api.interface';
-import { FirebaseApiService } from './shared/data-access-auth/service/firebase-api.service';
-import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { Store, StoreModule } from '@ngrx/store';
+import { ActionReducerMap, MetaReducer, StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import { reducers } from './reducers';
 import { EffectsModule } from '@ngrx/effects';
+import { CoreModule } from './core/core.module';
+import { authsFeatureKey, AuthState, authReducer, reducer } from './core/data-access-auth/+state/auth.reducer';
+import { AuthEffects } from './core/data-access-auth/+state/auth.effects';
 
+export interface State {
+  [authsFeatureKey]: AuthState;
+}
 
-export const httpTranslateLoader = (http: HttpClient) => (new TranslateHttpLoader(http));
+export const reducers: ActionReducerMap<State> = {
+  [authsFeatureKey]: authReducer,
+};
 
-export const initialActionsTranslate = (translate: TranslateService) =>
-  () => {
-    translate.setDefaultLang('es');
-    return translate.use('es').toPromise();
-  };
+export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule,
-    TranslateModule.forRoot({
-      defaultLanguage: 'es',
-      loader: {
-        provide: TranslateLoader,
-        useFactory: httpTranslateLoader,
-        deps: [HttpClient],
-      },
-    }),
-    DataAccessAuthModule,
+    CoreModule,
     StoreModule.forRoot(reducers, {
       runtimeChecks: {
         strictActionImmutability: true,
@@ -52,17 +40,11 @@ export const initialActionsTranslate = (translate: TranslateService) =>
         strictActionTypeUniqueness: true
       }
     }),
-    EffectsModule.forRoot([]),
-    !environment.production ? StoreDevtoolsModule.instrument() : []],
+    EffectsModule.forRoot([AuthEffects]),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+  ],
   providers: [
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initialActionsTranslate,
-      multi: true,
-      deps: [TranslateService]
-    },
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    { provide: AuthApiInterface, useClass: FirebaseApiService }
   ],
   bootstrap: [AppComponent],
 })

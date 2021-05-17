@@ -7,19 +7,19 @@ import { IonicModule } from '@ionic/angular';
 import { LoginPageRoutingModule } from './login-routing.module';
 
 import { LoginPage } from './login.page';
-import { UiModule } from '../../ui/ui.module';
+import { UiModule } from '../../shared/ui/ui.module';
 import { LoginFormComponent } from './login-form/login-form.component';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { CoreModule } from '@app/core/core.module';
 
 @NgModule({
   imports: [
     CommonModule,
+    TranslateModule,
     FormsModule,
     ReactiveFormsModule,
-    IonicModule,
     LoginPageRoutingModule,
-    UiModule,
-    TranslateModule
+    UiModule
   ],
   declarations: [LoginPage, LoginFormComponent]
 })

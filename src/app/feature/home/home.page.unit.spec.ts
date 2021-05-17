@@ -1,5 +1,5 @@
 import {getMockStore } from '@ngrx/store/testing';
-import { AuthFacade } from '../../shared/data-access-auth/+state/auth.facade';
+import { AuthFacade } from '../../core/data-access-auth/+state/auth.facade';
 import { HomePage } from './home.page';
 
 describe('HomePage unit test', () => {

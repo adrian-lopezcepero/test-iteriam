@@ -1,11 +1,11 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { provideMockStore, MockStore } from '@ngrx/store/testing';
-import { AuthFacade } from '../../shared/data-access-auth/+state/auth.facade';
-import { AuthState } from '../../shared/data-access-auth/+state/auth.reducer';
+import { AuthFacade } from '../../core/data-access-auth/+state/auth.facade';
+import { AuthState } from '../../core/data-access-auth/+state/auth.reducer';
 
 
 import { HomePage } from './home.page';
-import * as AuthSelectors from '../../shared/data-access-auth/+state/auth.selectors';
+import * as AuthSelectors from '../../core/data-access-auth/+state/auth.selectors';
 import { By } from '@angular/platform-browser';
 
 describe('HomePage', () => {

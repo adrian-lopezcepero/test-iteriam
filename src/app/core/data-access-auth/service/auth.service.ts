@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { finalize, first, takeLast } from 'rxjs/operators';
-import { User } from '../../util';
+import { User } from '../../../shared/util';
 import { LoginResponse } from '../models/login-response.model';
 import { AuthApiInterface } from './auth-api.interface';
 

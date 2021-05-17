@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IteriamToggleComponent } from './iteriam-toggle/iteriam-toggle.component';
 import { ToastComponent } from './toast/toast.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 const EXPORTED_COMPONENTS = [IteriamInputComponent,IteriamToggleComponent, ToastComponent];
 const EXPORTED_IMPORTS = [FormsModule, ReactiveFormsModule];
@@ -12,7 +13,7 @@ const EXPORTED_IMPORTS = [FormsModule, ReactiveFormsModule];
 @NgModule({
   declarations: [...EXPORTED_COMPONENTS],
   imports: [
-    CommonModule, IonicModule,...EXPORTED_IMPORTS
+    CommonModule, TranslateModule,...EXPORTED_IMPORTS
   ],
   exports: [...EXPORTED_IMPORTS, ...EXPORTED_COMPONENTS]
 })
