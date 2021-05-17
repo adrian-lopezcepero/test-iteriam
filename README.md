@@ -28,7 +28,7 @@ Source code: https://github.com/adrian-lopezcepero/test-iteriam
 # Testing
 
 1. npm run test
-2. npm run e2e or npm run e2e:ci
+2. npm run e2e (interactive mode) or npm run e2e:ci
 
 # Deploy
 

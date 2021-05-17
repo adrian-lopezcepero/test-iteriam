@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { defer, from, Observable, of } from 'rxjs';
-import { untilDestroyed, User } from '../../../shared/util';
+import { User } from '../../../shared/util';
 import { AuthApiInterface } from './auth-api.interface';
-import { catchError, exhaustMap, map, mergeMap, switchMap, takeUntil, tap } from 'rxjs/operators';
+import { exhaustMap, map } from 'rxjs/operators';
 
 import firebase from 'firebase/app';
 // Add the Firebase services that you want to use
